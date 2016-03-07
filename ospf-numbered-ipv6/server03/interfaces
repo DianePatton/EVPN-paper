@@ -1,0 +1,10 @@
+auto eth0
+iface eth0 inet dhcp
+    post-up ip route add default via 192.168.0.1
+
+auto eth1
+iface eth1 inet6 static
+    address fd16::3:101
+    netmask 112
+    gateway fd16::3:1
+    post-up ip -6 route fd00::/8 via fd16::3:1
