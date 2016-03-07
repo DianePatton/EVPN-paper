@@ -17,7 +17,12 @@ protocols are included:
  * BGP Unnumbered
 
 To use this repository, copy the interfaces file to `/etc/network/` and the
-Quagga.conf and daemons file to `/etc/quagga/` on each device and reboot.
+Quagga.conf and daemons file to `/etc/quagga/` on each device and reboot. A
+helper script is provided to simplify this. To use it, first copy the contents
+of this folder to ``/var/www`, then run
+
+    python pushconfig.py bgp-unnumbered server01,server02,leaf01,leaf02,spine01,spine02
+
 
 
 

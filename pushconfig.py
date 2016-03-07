@@ -2,6 +2,7 @@
 
 import sys
 import paramiko
+import time
 from paramiko import SSHClient
 
 try:
@@ -15,18 +16,18 @@ except:
 for host in hostnames:
     expect = paramiko.SSHClient()
     expect.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    expect.connect(switch.name, username="cumulus", password="CumulusLinux!")
+    expect.connect(host, username="cumulus", password="CumulusLinux!")
     stdin, stdout, stderr = expect.exec_command("sudo su", get_pty=True)
-    stdin.write('CumulusLinux!\n')
-    stdin.flush()
-    stdin.write('wget %s/%s/interfaces\n'%(url, host))
-    stdin.write('wget %s/%s/Quagga.conf\n'%(url, host))
-    stdin.write('wget %s/%s/daemons\n'%(url, host))
-    stdin.write('mv interfaces /etc/network/interfaces\n')
-    stdin.write('mv Quagga.conf /etc/quagga/Quagga.conf\n')
-    stdin.write('mv daemons /etc/quagga/daemons\n')
-    stdin.write('reboot\n')
-    stdin.flush()
-    # Note, this printline is necessary in order for the aplication to run
-    print(stderr.read())
+    for line in ['CumulusLinux!',
+                 'wget %s/%s/interfaces'%(url, host),
+                 'wget %s/%s/Quagga.conf'%(url, host),
+                 'wget %s/%s/daemons'%(url, host),
+                 'mv interfaces /etc/network/interfaces',
+                 'mv Quagga.conf /etc/quagga/Quagga.conf',
+                 'mv daemons /etc/quagga/daemons',
+                 'reboot']:
+        print("%s: %s"%(host, line))
+        stdin.write('%s\n'%line)
+        stdin.flush()
+        time.sleep(2)
     expect.close()
