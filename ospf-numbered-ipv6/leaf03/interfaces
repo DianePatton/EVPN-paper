@@ -24,4 +24,4 @@ iface swp1
 auto br0
 iface br0
      bridge-ports swp1
-     address fd16::3:101/112
+     address fd16::3:1/112
