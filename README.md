@@ -17,7 +17,7 @@ protocols are included:
  * BGP Unnumbered
 
 To use this repository, copy the interfaces file to `/etc/network/` and the
-Quagga.conf to `/etc/quagga/` on each device and reboot.
+Quagga.conf and daemons file to `/etc/quagga/` on each device and reboot.
 
 
 
