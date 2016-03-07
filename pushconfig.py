@@ -5,19 +5,17 @@ import paramiko
 from paramiko import SSHClient
 
 try:
-    username = sys.argv[1]
-    password = sys.argv[2]
-    demo = sys.argv[3]
-    hostnames = sys.argv[4].split(',')
-    url = "http://oob-mgmt-server.lab.local/%s/"%demo
+    demo = sys.argv[1]
+    hostnames = sys.argv[2].split(',')
+    url = "http://oob-mgmt-server.lab.local/cldemo-config/%s/"%demo
 except:
-    print("Usage: pushconfig [username] [password] [demo] [leaf01,leaf02,etc]")
+    print("Usage: pushconfig [demo] [leaf01,leaf02,etc]")
     sys.exit(-1)
 
 for host in hostnames:
     expect = paramiko.SSHClient()
     expect.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    expect.connect(switch.name, username, password)
+    expect.connect(switch.name, username="cumulus", password="CumulusLinux!")
     stdin, stdout, stderr = expect.exec_command("sudo su", get_pty=True)
     stdin.write('CumulusLinux!\n')
     stdin.flush()
