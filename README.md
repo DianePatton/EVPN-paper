@@ -46,3 +46,10 @@ Topology
     | server01     |  | server02     |  | server03     |  | server04     |
     |              |  |              |  |              |  |              |
     +--------------+  +--------------+  +--------------+  +--------------+
+
+
+Caveats
+-------
+ * IPv6 fails on servers with older kernels due to lacking optimistic DAD.
+   Disable DAD on eth1 and eth2 on the servers.
+   `sudo sysctl net.ipv6.conf.eth1.accept_dad=0`
