@@ -1,8 +1,6 @@
 Demo Quagga Configurations
 ==========================
-
 Version: Cumulus Linux 2.5.5
-
 
 
 Description
@@ -18,13 +16,11 @@ protocols are included:
 
 To use this repository, copy the interfaces file to `/etc/network/` and the
 Quagga.conf and daemons file to `/etc/quagga/` on each device and reboot. A
-helper script is provided to simplify this. To use it, first copy the contents
-of this folder to ``/var/www`, then run
+helper script is provided to simplify this:
 
+    cd /var/www
+    git clone https://github.com/cumulusnetworks/cldemo-config
     python pushconfig.py bgp-unnumbered server01,server02,leaf01,leaf02,spine01,spine02
-
-
-
 
 
 Topology
