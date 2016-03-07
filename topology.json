@@ -1,0 +1,273 @@
+{
+    "id": "reference",
+    "devices": [
+        {
+            "hostname": "leaf01",
+            "device_type": "switch",
+            "operating_system": "cumulusvx-2.5.3",
+            "mgmt_ip": "192.168.0.11",
+            "nics": 10,
+            "mapping": ["swp1", "swp2", "swp45", "swp46", "swp47", "swp48", "swp49", "swp50", "swp51", "swp52"],
+            "macs": ["A0:00:00:00:00:11"]
+        },
+        {
+            "hostname": "leaf02",
+            "device_type": "switch",
+            "operating_system": "cumulusvx-2.5.3",
+            "mgmt_ip": "192.168.0.12",
+            "nics": 10,
+            "mapping": ["swp1", "swp2", "swp45", "swp46", "swp47", "swp48", "swp49", "swp50", "swp51", "swp52"],
+            "macs": ["A0:00:00:00:00:12"]
+        },
+        {
+            "hostname": "leaf03",
+            "device_type": "switch",
+            "operating_system": "cumulusvx-2.5.3",
+            "mgmt_ip": "192.168.0.13",
+            "nics": 10,
+            "mapping": ["swp1", "swp2", "swp45", "swp46", "swp47", "swp48", "swp49", "swp50", "swp51", "swp52"],
+            "macs": ["A0:00:00:00:00:13"]
+        },
+        {
+            "hostname": "leaf04",
+            "device_type": "switch",
+            "operating_system": "cumulusvx-2.5.3",
+            "mgmt_ip": "192.168.0.14",
+            "nics": 10,
+            "mapping": ["swp1", "swp2", "swp45", "swp46", "swp47", "swp48", "swp49", "swp50", "swp51", "swp52"],
+            "macs": ["A0:00:00:00:00:14"]
+        },
+        {
+            "hostname": "spine01",
+            "device_type": "switch",
+            "operating_system": "cumulusvx-2.5.3",
+            "mgmt_ip": "192.168.0.21",
+            "nics": 8,
+            "mapping": ["swp1", "swp2", "swp3", "swp4", "swp29", "swp30", "swp31", "swp32"],
+            "macs": ["A0:00:00:00:00:21"]
+        },
+        {
+            "hostname": "spine02",
+            "device_type": "switch",
+            "operating_system": "cumulusvx-2.5.3",
+            "mgmt_ip": "192.168.0.22",
+            "nics": 8,
+            "mapping": ["swp1", "swp2", "swp3", "swp4", "swp29", "swp30", "swp31", "swp32"],
+            "macs": ["A0:00:00:00:00:22"]
+        },
+        {
+            "hostname": "server01",
+            "device_type": "server",
+            "operating_system": "ubuntu-trusty",
+            "mgmt_ip": "192.168.0.31",
+            "nics": 2,
+            "macs": ["A0:00:00:00:00:31"]
+        },
+        {
+            "hostname": "server02",
+            "device_type": "server",
+            "operating_system": "ubuntu-trusty",
+            "mgmt_ip": "192.168.0.32",
+            "nics": 2,
+            "macs": ["A0:00:00:00:00:32"]
+        },
+        {
+            "hostname": "server03",
+            "device_type": "server",
+            "operating_system": "ubuntu-trusty",
+            "mgmt_ip": "192.168.0.33",
+            "nics": 2,
+            "macs": ["A0:00:00:00:00:33"]
+        },
+        {
+            "hostname": "server04",
+            "device_type": "server",
+            "operating_system": "ubuntu-trusty",
+            "mgmt_ip": "192.168.0.34",
+            "nics": 2,
+            "macs": ["A0:00:00:00:00:34"]
+        }
+    ],
+    "cabling": [
+        {
+            "dest_host": "spine01",
+            "dest_iface": "swp1",
+            "src_iface": "swp51",
+            "src_host": "leaf01"
+        },
+        {
+            "dest_host": "spine01",
+            "dest_iface": "swp2",
+            "src_iface": "swp51",
+            "src_host": "leaf02"
+        },
+        {
+            "dest_host": "spine01",
+            "dest_iface": "swp3",
+            "src_iface": "swp51",
+            "src_host": "leaf03"
+        },
+        {
+            "dest_host": "spine01",
+            "dest_iface": "swp4",
+            "src_iface": "swp51",
+            "src_host": "leaf04"
+        },
+        {
+            "dest_host": "spine02",
+            "dest_iface": "swp1",
+            "src_iface": "swp52",
+            "src_host": "leaf01"
+        },
+        {
+            "dest_host": "spine02",
+            "dest_iface": "swp2",
+            "src_iface": "swp52",
+            "src_host": "leaf02"
+        },
+        {
+            "dest_host": "spine02",
+            "dest_iface": "swp3",
+            "src_iface": "swp52",
+            "src_host": "leaf03"
+        },
+        {
+            "dest_host": "spine02",
+            "dest_iface": "swp4",
+            "src_iface": "swp52",
+            "src_host": "leaf04"
+        },
+        {
+            "dest_host": "leaf02",
+            "dest_iface": "swp49",
+            "src_iface": "swp49",
+            "src_host": "leaf01"
+        },
+        {
+            "dest_host": "leaf02",
+            "dest_iface": "swp50",
+            "src_iface": "swp50",
+            "src_host": "leaf01"
+        },
+        {
+            "dest_host": "leaf04",
+            "dest_iface": "swp49",
+            "src_iface": "swp49",
+            "src_host": "leaf03"
+        },
+        {
+            "dest_host": "leaf04",
+            "dest_iface": "swp50",
+            "src_iface": "swp50",
+            "src_host": "leaf03"
+        },
+        {
+            "dest_host": "spine02",
+            "dest_iface": "swp31",
+            "src_iface": "swp31",
+            "src_host": "spine01"
+        },
+        {
+            "dest_host": "spine02",
+            "dest_iface": "swp32",
+            "src_iface": "swp32",
+            "src_host": "spine01"
+        },
+        {
+            "dest_host": "leaf01",
+            "dest_iface": "swp1",
+            "src_iface": "eth1",
+            "src_host": "server01"
+        },
+        {
+            "dest_host": "leaf02",
+            "dest_iface": "swp1",
+            "src_iface": "eth2",
+            "src_host": "server01"
+        },
+        {
+            "dest_host": "leaf01",
+            "dest_iface": "swp2",
+            "src_iface": "eth1",
+            "src_host": "server02"
+        },
+        {
+            "dest_host": "leaf02",
+            "dest_iface": "swp2",
+            "src_iface": "eth2",
+            "src_host": "server02"
+        },
+        {
+            "dest_host": "leaf03",
+            "dest_iface": "swp1",
+            "src_iface": "eth1",
+            "src_host": "server03"
+        },
+        {
+            "dest_host": "leaf04",
+            "dest_iface": "swp1",
+            "src_iface": "eth2",
+            "src_host": "server03"
+        },
+        {
+            "dest_host": "leaf03",
+            "dest_iface": "swp2",
+            "src_iface": "eth1",
+            "src_host": "server04"
+        },
+        {
+            "dest_host": "leaf04",
+            "dest_iface": "swp2",
+            "src_iface": "eth2",
+            "src_host": "server04"
+        },
+        {
+            "dest_host": "leaf01",
+            "dest_iface": "swp45",
+            "src_iface": "swp46",
+            "src_host": "leaf01"
+        },
+        {
+            "dest_host": "leaf02",
+            "dest_iface": "swp45",
+            "src_iface": "swp46",
+            "src_host": "leaf02"
+        },
+        {
+            "dest_host": "leaf03",
+            "dest_iface": "swp45",
+            "src_iface": "swp46",
+            "src_host": "leaf03"
+        },
+        {
+            "dest_host": "leaf04",
+            "dest_iface": "swp45",
+            "src_iface": "swp46",
+            "src_host": "leaf04"
+        },
+        {
+            "dest_host": "leaf01",
+            "dest_iface": "swp47",
+            "src_iface": "swp48",
+            "src_host": "leaf01"
+        },
+        {
+            "dest_host": "leaf02",
+            "dest_iface": "swp47",
+            "src_iface": "swp48",
+            "src_host": "leaf02"
+        },
+        {
+            "dest_host": "leaf03",
+            "dest_iface": "swp47",
+            "src_iface": "swp48",
+            "src_host": "leaf03"
+        },
+        {
+            "dest_host": "leaf04",
+            "dest_iface": "swp47",
+            "src_iface": "swp48",
+            "src_host": "leaf04"
+        }
+    ]
+}
