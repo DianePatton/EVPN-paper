@@ -20,7 +20,9 @@ protocols are included:
 
 To use this repository, copy the interfaces file to `/etc/network/` and the
 Quagga.conf and daemons file to `/etc/quagga/` on each device and reboot. A
-helper script is provided to simplify this:
+helper script is provided to simplify this (this assumes you have a server
+named oob-mgmt-server connected to all of your devices via eth0 that's running
+apache or nginx).
 
     cd /var/www
     git clone https://github.com/cumulusnetworks/cldemo-config-quagga
