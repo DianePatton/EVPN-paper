@@ -7,4 +7,9 @@ iface eth1 inet6 static
     address fd16::3:101
     netmask 112
     gateway fd16::3:1
+    pre-up sysctl net.ipv6.conf.eth1.accept_dad=0
     post-up ip -6 route fd00::/8 via fd16::3:1
+
+    # Note that on older kernels (before 2015), IPv6 fails due to lacking
+    # optimistic DAD support. Therefore we disable DAD before the interface comes
+    # up in this demo.
