@@ -18,8 +18,8 @@ iface swp52
 
 
 # bridge to hosts
-auto swp1
-iface swp1
+auto swp2
+iface swp2
 
 auto br0
 iface br0
