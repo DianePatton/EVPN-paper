@@ -4,16 +4,10 @@ import sys
 import paramiko
 import time
 from paramiko import SSHClient
+from multiprocessing import Process
 
-try:
-    demo = sys.argv[1]
-    hostnames = sys.argv[2].split(',')
+def go(host, demo):
     url = "http://oob-mgmt-server.lab.local/cldemo-config/%s/"%demo
-except:
-    print("Usage: pushconfig [demo] [leaf01,leaf02,etc]")
-    sys.exit(-1)
-
-for host in hostnames:
     expect = paramiko.SSHClient()
     expect.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     expect.connect(host, username="cumulus", password="CumulusLinux!")
@@ -31,3 +25,20 @@ for host in hostnames:
         stdin.flush()
         time.sleep(2)
     expect.close()
+
+
+if __name__ == "__main__":
+    try:
+        demo = sys.argv[1]
+        hostnames = sys.argv[2].split(',')
+    except:
+        print("Usage: pushconfig [demo] [leaf01,leaf02,etc]")
+        sys.exit(-1)
+
+    processes = []
+    for host in hostnames:
+        p = Process(target=go, args=(host, demo))
+        p.start()
+        processes.append(p)
+    for p in processes:
+        p.join()

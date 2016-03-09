@@ -19,7 +19,7 @@ protocols are included:
  * BGP Unnumbered with IPv6
 
 To use this repository, copy the interfaces file to `/etc/network/` and the
-Quagga.conf and daemons file to `/etc/quagga/` on each device and reboot. A
+Quagga.conf and daemons file to `/etc/quagga/` onto each device and reboot. A
 helper script is provided to simplify this (this assumes you have a server
 named oob-mgmt-server connected to all of your devices via eth0 that's running
 apache or nginx).
@@ -52,3 +52,11 @@ Topology
     | server01     |  | server02     |  | server03     |  | server04     |
     |              |  |              |  |              |  |              |
     +--------------+  +--------------+  +--------------+  +--------------+
+
+
+Syntax Checking
+---------------
+The syntax of all of the Quagga.conf files in this repository can be verified
+using the following line in bash.
+
+     for i in `find  | grep Quagga.conf`; do vtysh -f $i --dryrun; done ;
