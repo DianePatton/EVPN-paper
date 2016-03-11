@@ -1,5 +1,5 @@
-Demo Quagga Configurations
-==========================
+Demo Routing Configurations
+===========================
 Version: Cumulus Linux 2.5.6
 
 
@@ -25,7 +25,7 @@ named oob-mgmt-server connected to all of your devices via eth0 that's running
 apache or nginx).
 
     cd /var/www
-    git clone https://github.com/cumulusnetworks/cldemo-config-quagga
+    git clone https://github.com/cumulusnetworks/cldemo-config-routing
     python pushconfig.py bgp-unnumbered server01,server02,leaf01,leaf02,spine01,spine02
 
 
