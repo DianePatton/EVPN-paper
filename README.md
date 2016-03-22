@@ -27,7 +27,7 @@ apache or nginx).
     cd /var/www
     git clone https://github.com/cumulusnetworks/cldemo-config-routing
     cd cldemo-config-routing
-    python pushconfig.py bgp-unnumbered server01,server02,leaf01,leaf02,spine01,spine02
+    python pushconfig.py bgp-numbered server01,server02,leaf01,leaf02,spine01,spine02
 
 
 Topology
