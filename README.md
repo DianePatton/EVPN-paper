@@ -25,6 +25,7 @@ named oob-mgmt-server connected to all of your devices via eth0 that's running
 apache or nginx).
 
     cd /var/www
+    sudo apt-get install python-paramiko
     git clone https://github.com/cumulusnetworks/cldemo-config-routing
     cd cldemo-config-routing
     python pushconfig.py bgp-numbered server01,server02,leaf01,leaf02,spine01,spine02
