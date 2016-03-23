@@ -55,6 +55,8 @@ Topology
     |              |  |              |  |              |  |              |
     +--------------+  +--------------+  +--------------+  +--------------+
 
+For a virtual topology, please follow the steps in [cldemo-vagrant](https://github.com/cumulusnetworks/cldemo-vagrant)
+
 
 Syntax Checking
 ---------------
