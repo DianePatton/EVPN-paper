@@ -3,6 +3,23 @@ Demo Routing Configurations
 Version: Cumulus Linux 2.5.6
 
 
+Quickstart: Run the demo
+------------------------
+(This assumes you are running Ansible 1.9.4 and Vagrant 1.8.4 on your host.)
+
+    git clone https://github.com/cumulusnetworks/cldemo-vagrant
+    cd cldemo-vagrant
+    vagrant up
+    vagrant ssh oob-mgmt-server
+    sudo su - cumulus
+    git clone https://github.com/cumulusnetworks/cldemo-config-routing
+    cd cldemo-config-routing
+    sudo ln -s  /home/cumulus/cldemo-config-routing /var/www/cldemo-config-routing
+    python pushconfig.py bgp-numbered leaf01,leaf02,spine01,spine02,server01,server02
+    ssh server01
+    ping 172.16.2.101
+
+
 Description
 -----------
 This Github repository contains the configuration files necessary for setting
@@ -22,13 +39,10 @@ To use this repository, copy the interfaces file to `/etc/network/` and the
 Quagga.conf and daemons file to `/etc/quagga/` onto each device and reboot. A
 helper script is provided to simplify this (this assumes you have a server
 named oob-mgmt-server connected to all of your devices via eth0 that's running
-apache or nginx).
+apache or nginx). To use the helper script, create a symlink to the
+cldemo-config-routing folder in `/var/www` on the oob-mgmt-server. Then run
 
-    cd /var/www
-    sudo apt-get install python-paramiko
-    git clone https://github.com/cumulusnetworks/cldemo-config-routing
-    cd cldemo-config-routing
-    python pushconfig.py bgp-numbered server01,server02,leaf01,leaf02,spine01,spine02
+    python pushconfig.py <demo_name> leaf01,leaf02,spine01,spine02,server01,server02,etc...
 
 
 Topology
