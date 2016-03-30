@@ -15,8 +15,7 @@ def go(host, demo):
     expect = paramiko.SSHClient()
     expect.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     expect.connect(host, username="cumulus", password="CumulusLinux!")
-    for line in ['sudo CumulusLinux!',
-                 'sudo wget %s/%s/interfaces'%(url, host),
+    for line in ['sudo wget %s/%s/interfaces'%(url, host),
                  'sudo wget %s/%s/Quagga.conf'%(url, host),
                  'sudo wget %s/%s/daemons'%(url, host),
                  'sudo mv interfaces /etc/network/interfaces',
