@@ -25,7 +25,7 @@ def go(host, demo):
                  'sudo reboot']:
         stdin, stdout, stderr = expect.exec_command(line, get_pty=True)
         stdout.channel.recv_exit_status()
-        time.sleep(2)
+        print("%s: %s"%(host, line))
     expect.close()
 
 
