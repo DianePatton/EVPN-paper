@@ -1,5 +1,9 @@
 #! /usr/bin/env python
 
+# This script installs pushes our configuration to the target hosts.
+# This script assumes that the 'cumulus' user has passwordless sudo enabled on
+# the target devices, and that the cldemo has been installed as per the README.
+
 import sys
 import paramiko
 import time
@@ -11,18 +15,16 @@ def go(host, demo):
     expect = paramiko.SSHClient()
     expect.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     expect.connect(host, username="cumulus", password="CumulusLinux!")
-    stdin, stdout, stderr = expect.exec_command("sudo su", get_pty=True)
-    for line in ['CumulusLinux!',
-                 'wget %s/%s/interfaces'%(url, host),
-                 'wget %s/%s/Quagga.conf'%(url, host),
-                 'wget %s/%s/daemons'%(url, host),
-                 'mv interfaces /etc/network/interfaces',
-                 'mv Quagga.conf /etc/quagga/Quagga.conf',
-                 'mv daemons /etc/quagga/daemons',
-                 'reboot']:
-        print("%s: %s"%(host, line))
-        stdin.write('%s\n'%line)
-        stdin.flush()
+    for line in ['sudo CumulusLinux!',
+                 'sudo wget %s/%s/interfaces'%(url, host),
+                 'sudo wget %s/%s/Quagga.conf'%(url, host),
+                 'sudo wget %s/%s/daemons'%(url, host),
+                 'sudo mv interfaces /etc/network/interfaces',
+                 'sudo mv Quagga.conf /etc/quagga/Quagga.conf',
+                 'sudo mv daemons /etc/quagga/daemons',
+                 'sudo reboot']:
+        stdin, stdout, stderr = expect.exec_command(line, get_pty=True)
+        stdout.channel.recv_exit_status()
         time.sleep(2)
     expect.close()
 
@@ -32,7 +34,7 @@ if __name__ == "__main__":
         demo = sys.argv[1]
         hostnames = sys.argv[2].split(',')
     except:
-        print("Usage: pushconfig [demo] [leaf01,leaf02,etc]")
+        print("Usage: pushconfig.py [demo] [leaf01,leaf02,etc]")
         sys.exit(-1)
 
     processes = []
