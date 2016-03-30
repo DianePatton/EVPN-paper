@@ -9,7 +9,7 @@ Quickstart: Run the demo
 
     git clone https://github.com/cumulusnetworks/cldemo-vagrant
     cd cldemo-vagrant
-    vagrant up
+    vagrant up oob-mgmt-server oob-mgmt-switch leaf01 leaf02 spine01 spine02 server01 server02
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
     git clone https://github.com/cumulusnetworks/cldemo-config-routing
@@ -42,35 +42,7 @@ named oob-mgmt-server connected to all of your devices via eth0 that's running
 apache or nginx). To use the helper script, create a symlink to the
 cldemo-config-routing folder in `/var/www` on the oob-mgmt-server. Then run
 
-    python pushconfig.py <demo_name> leaf01,leaf02,spine01,spine02,server01,server02,etc...
-
-
-Topology
---------
-                     +--------------+  +--------------+
-                     | spine01      |  | spine02      |
-                     |              |  |              |
-                     +--------------+  +--------------+
-                    swp1-4 ||||                |||| swp1-4
-             +---------------------------------+|||
-             |             ||||+----------------+|+----------------+
-             |             |||+---------------------------------+  |
-          +----------------+|+----------------+  |              |  |
-    swp51 |  | swp52  swp51 |  | swp52  swp51 |  | swp52  swp51 |  | swp52
-    +--------------+  +--------------+  +--------------+  +--------------+
-    | leaf01       |  | leaf02       |  | leaf03       |  | leaf04       |
-    |              |  |              |  |              |  |              |
-    +--------------+  +--------------+  +--------------+  +--------------+
-      swp1 |            swp2 |            swp1 |            swp2 |
-           |                 |                 |                 |
-      eth1 |            eth2 |            eth1 |            eth2 |
-    +--------------+  +--------------+  +--------------+  +--------------+
-    | server01     |  | server02     |  | server03     |  | server04     |
-    |              |  |              |  |              |  |              |
-    +--------------+  +--------------+  +--------------+  +--------------+
-
-For a virtual topology, please follow the steps in [cldemo-vagrant](https://github.com/cumulusnetworks/cldemo-vagrant)
-
+    python pushconfig.py <demo_name> leaf01,leaf02,spine01,spine02,server01,server02
 
 Syntax Checking
 ---------------
