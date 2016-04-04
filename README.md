@@ -1,6 +1,6 @@
 Demo Routing Configurations
 ===========================
-This Github repository contains the configuration files necessary for setting up Layer 3 routing on a CLOS topology using Cumulus Linux and Quagga. Eight protocols are included:
+This Github repository contains the configuration files necessary for setting up Layer 3 routing on a CLOS topology using Cumulus Linux and Quagga on the [Reference Topology](http://github.com/cumulusnetworks/cldemo-vagrant). Eight protocols are included:
 
  * OSPF Numbered
  * OSPF Unnumbered
