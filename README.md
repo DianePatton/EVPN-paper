@@ -68,7 +68,8 @@ Verifying Routing
 -----------------
 Running the demo is easiest with two terminal windows open. One window will log into server01 and ping server02's IP address. The second window will be used to deploy new configuration on the switches.
 
-#### In terminal 1
+*In terminal 1*
+
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
     git clone https://github.com/cumulusnetworks/cldemo-config-routing
@@ -76,13 +77,15 @@ Running the demo is easiest with two terminal windows open. One window will log 
     sudo ln -s  /home/cumulus/cldemo-config-routing /var/www/cldemo-config-routing
     python pushconfig.py bgp-unnumbered leaf01,leaf02,spine01,spine02,server01,server02
 
-#### In terminal 2
+*In terminal 2*
+
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
     ssh server01
     ping 172.16.2.101
 
-#### In terminal 1
+*In terminal 1*
+
     python pushconfig.py ospf-unnumbered leaf01,leaf02,spine01,spine02
     # wait and watch connectivity drop and then come back
     python pushconfig.py bgp-numbered leaf01,leaf02,spine01,spine02
@@ -95,7 +98,8 @@ Verify High Availability
 ------------------------
 Using a routing protocol such as BGP or OSPF means that as long as one spine is still running, the network will automatically learn a new route and keep the fabric connected. This means that you can do rolling upgrades one spine at a time without incurring any downtime.
 
-#### In terminal 1
+*In terminal 1*
+
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
     git clone https://github.com/cumulusnetworks/cldemo-config-routing
@@ -103,20 +107,23 @@ Using a routing protocol such as BGP or OSPF means that as long as one spine is 
     sudo ln -s  /home/cumulus/cldemo-config-routing /var/www/cldemo-config-routing
     python pushconfig.py bgp-unnumbered leaf01,leaf02,spine01,spine02,server01,server02
 
-#### In terminal 2
+*In terminal 2*
+
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
     ssh server01
     ping 172.16.2.101
     
-#### In terminal 3
+*In terminal 3*
+
     vagrant destroy -f spine01
     # note that the pings may hiccup a bit, but will keep going
     vagrant destroy -f spine02
     # now pings will totally fail
     vagrant up spine01 spine02
 
-#### In terminal 1
+*In terminal 1*
+
     python pushconfig.py bgp-unnumbered spine01,spine02
     # watch Terminal 2, and pings will return
 
