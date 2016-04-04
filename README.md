@@ -11,7 +11,7 @@ This Github repository contains the configuration files necessary for setting up
  * BGP Numbered with IPv6
  * BGP Unnumbered with IPv6
 
-The flatfiles in this repository will set up a Layer 3 routing fabric between the leafs and spines, and will configure a Layer 2 bridge on each leaf top-of-rack switch for the servers in that rack. Servers access other servers in the same rack with one hop across the leaf top-of-rack, and access servers in other racks via one of the spine switches. A helper script named `pushconfig.py` is available to helps copy the flatfiles to the devices in the network, but you could just as easily copy and paste them by hand or incorporate them into an automation tool instead.
+The flatfiles in this repository will set up a Layer 3 routing fabric between the leafs and spines, and will configure a Layer 2 bridge on each leaf top-of-rack switch for the servers in that rack. Servers access other servers in the same rack with one hop across the leaf top-of-rack, and access servers in other racks via one of the spine switches. A helper script named `push-config.py` is available to quickly deploy the flatfiles to the devices in the network, but you could just as easily copy and paste them by hand or incorporate them into an automation tool instead.
 
 
 Quickstart: Run the demo
