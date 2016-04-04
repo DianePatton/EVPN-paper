@@ -1,6 +1,17 @@
 Demo Routing Configurations
 ===========================
-Version: Cumulus Linux 2.5.6
+This Github repository contains the configuration files necessary for setting up Layer 3 routing on a CLOS topology using Cumulus Linux and Quagga. Eight protocols are included:
+
+ * OSPF Numbered
+ * OSPF Unnumbered
+ * BGP Numbered
+ * BGP Unnumbered
+ * OSPF Numbered with IPv6
+ * OSPF Unnumbered with IPv6
+ * BGP Numbered with IPv6
+ * BGP Unnumbered with IPv6
+
+The flatfiles in this repository will set up a Layer 3 routing fabric between the leafs and spines, and will configure a Layer 2 bridge on each leaf top-of-rack switch for the servers in that rack. Servers access other servers in the same rack with one hop across the leaf top-of-rack, and access servers in other racks via one of the spine switches. A helper script named `pushconfig.py` is available to helps copy the flatfiles to the devices in the network, but you could just as easily copy and paste them by hand or incorporate them into an automation tool instead.
 
 
 Quickstart: Run the demo
@@ -44,22 +55,17 @@ This demo runs on a spine-leaf topology with two single-attached hosts. The help
          +------------+       +------------+
 
 
-Description
------------
-This Github repository contains the configuration files necessary for setting up Layer 3 routing on a CLOS topology using Cumulus Linux and Quagga. Eight protocols are included:
+Using the Helper Script
+-----------------------
+The `push-config.py` helper script deploys the configuration to the in-band network by downloading the files from the out-of-band management server. This requires a web server to be installed on the out-of-band server and passwordless login and sudo to be enabled on the in-band devices, both of which are done for you if you used [cldemo-vagrant](http://github.com/cumulusnetworks/cldemo-vagrant) to provision your topology. The demo repository needs to be linked in the management server's `/var/www/` directory:
 
- * OSPF Numbered
- * OSPF Unnumbered
- * BGP Numbered
- * BGP Unnumbered
- * OSPF Numbered with IPv6
- * OSPF Unnumbered with IPv6
- * BGP Numbered with IPv6
- * BGP Unnumbered with IPv6
+    vagrant ssh oob-mgmt-server
+    sudo su - cumulus
+    git clone https://github.com/cumulusnetworks/cldemo-config-routing
+    cd cldemo-config-routing
+    sudo ln -s  /home/cumulus/cldemo-config-routing /var/www/cldemo-config-routing
 
-The flatfiles in this repository will set up a Layer 3 routing fabric between the leafs and spines, and will configure a Layer 2 bridge on each leaf top-of-rack switch for the servers in that rack. Servers access other servers in the same rack with one hop across the leaf top-of-rack, and access servers in other racks via one of the spine switches.
-
-To use this repository, copy the interfaces file to `/etc/network/` and the Quagga.conf and daemons file to `/etc/quagga/` onto each device and reboot. A helper script is provided to simplify this (this assumes you have a server named oob-mgmt-server connected to all of your devices via eth0 that's running apache or nginx). To use the helper script, create a symlink to the cldemo-config-routing folder in `/var/www` on the oob-mgmt-server. Then run
+After setting up the repo, you can now use `push-config.py`! This script will log in to each device, download the files, and reboot the device.
 
     python pushconfig.py <demo_name> leaf01,leaf02,spine01,spine02,server01,server02
 
@@ -72,9 +78,7 @@ Running the demo is easiest with two terminal windows open. One window will log 
 
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
-    git clone https://github.com/cumulusnetworks/cldemo-config-routing
     cd cldemo-config-routing
-    sudo ln -s  /home/cumulus/cldemo-config-routing /var/www/cldemo-config-routing
     python pushconfig.py bgp-unnumbered leaf01,leaf02,spine01,spine02,server01,server02
 
 *In terminal 2*
@@ -102,9 +106,7 @@ Using a routing protocol such as BGP or OSPF means that as long as one spine is 
 
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
-    git clone https://github.com/cumulusnetworks/cldemo-config-routing
     cd cldemo-config-routing
-    sudo ln -s  /home/cumulus/cldemo-config-routing /var/www/cldemo-config-routing
     python pushconfig.py bgp-unnumbered leaf01,leaf02,spine01,spine02,server01,server02
 
 *In terminal 2*
