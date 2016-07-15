@@ -28,12 +28,12 @@ auto peerlink
 iface peerlink
     bond-slaves swp49 swp50
 
-auto peerlink.4095
-iface peerlink.4095
-    address 169.254.255.3
+auto peerlink.4094
+iface peerlink.4094
+    address 169.254.255.1
     netmask 255.255.255.0
     clagd-priority 4096
-    clagd-peer-ip 169.254.255.4
+    clagd-peer-ip 169.254.255.2
     clagd-backup-ip 10.0.0.14
     clagd-sys-mac 44:38:39:ff:00:02
 
