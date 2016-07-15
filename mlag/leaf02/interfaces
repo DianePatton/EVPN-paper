@@ -57,6 +57,6 @@ iface server2
 
 auto br0
 iface br0
-    bridge-ports peerlink server3 server4
+    bridge-ports peerlink server1 server2
     address 172.16.1.251
     address-virtual 172.16.1.1/24
