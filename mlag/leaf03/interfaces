@@ -60,6 +60,5 @@ iface server4
 auto br0
 iface br0
     bridge-ports peerlink server3 server4
-    address 172.16.2.250/24
-    address-virtual 172.16.2.1/24
+    address 172.16.2.1/24
     bridge-stp on

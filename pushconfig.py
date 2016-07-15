@@ -41,5 +41,6 @@ if __name__ == "__main__":
         p = Process(target=go, args=(host, demo))
         p.start()
         processes.append(p)
+        time.sleep(15)
     for p in processes:
         p.join()
