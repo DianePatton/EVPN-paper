@@ -35,19 +35,28 @@ iface peerlink.4095
     clagd-priority 4096
     clagd-peer-ip 169.254.255.4
     clagd-backup-ip 10.0.0.14
-    clagd-sys-mac 44:38:39:ff:00:03
-
+    clagd-sys-mac 44:38:39:ff:00:02
 
 # bridge to hosts
 auto swp1
 iface swp1
+
+auto server3
+iface server3
+    bond-slaves swp1
     clag-id 3
 
 auto swp2
 iface swp2
+
+auto server4
+iface server4
+    bond-slaves swp2
     clag-id 4
+
 
 auto br0
 iface br0
-     bridge-ports swp1 swp2
-     address 172.16.2.1/24
+    bridge-ports peerlink server3 server4
+    address 172.16.2.250/24
+    address-virtual 172.16.2.1/24
