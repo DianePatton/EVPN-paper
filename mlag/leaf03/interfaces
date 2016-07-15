@@ -20,9 +20,11 @@ iface swp52
 # peerlink
 auto swp49
 iface swp49
+    post-up ip link set $IFACE promisc on     # Only required on VX
 
 auto swp50
 iface swp50
+    post-up ip link set $IFACE promisc on     # Only required on VX
 
 auto peerlink
 iface peerlink

@@ -5,12 +5,12 @@ iface eth0 inet dhcp
 auto eth1
 iface eth1 inet manual
     bond-master bond0
-    post-up ip link set eth1 promisc on     # Only required on VX
+    post-up ip link set $IFACE promisc on     # Only required on VX
 
 auto eth2
 iface eth2 inet manual
     bond-master bond0
-    post-up ip link set eth2 promisc on     # Only required on VX
+    post-up ip link set $IFACE promisc on     # Only required on VX
 
 auto bond0
 iface bond0 inet static
