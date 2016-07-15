@@ -15,6 +15,11 @@ iface eth2 inet manual
 auto bond0
 iface bond0 inet static
     bond-slaves none
+    bond-mode 802.3ad
+    bond-miimon 100
+    bond-lacp-rate 1
+    bond-min-links 1
+    bond-xmit-hash-policy layer3+4
     address 172.16.1.101
     netmask 255.255.255.0
     post-up ip route add 172.16.0.0/16 via 172.16.1.1
@@ -23,4 +28,3 @@ iface bond0 inet static
 
 # install ifenslave
 # modprobe bonding
-#
