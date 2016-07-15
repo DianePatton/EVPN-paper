@@ -3,15 +3,15 @@ iface eth0 inet dhcp
     post-up ip route add default via 192.168.0.1
 
 auto eth1
-iface eth1 inet static
+iface eth1 inet manual
     post-up ip link set eth1 promisc on     # Only required on VX
 
 auto eth2
-iface eth2 inet static
+iface eth2 inet manual
     post-up ip link set eth2 promisc on     # Only required on VX
 
 auto bond0
-iface bond0
+iface bond0 inet static
     bond-slaves eth1 eth2
     address 172.16.1.101
     netmask 255.255.255.0

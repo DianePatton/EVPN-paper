@@ -14,7 +14,7 @@ Quickstart: Run the demo
     sudo su - cumulus
     git clone https://github.com/cumulusnetworks/cldemo-config-mlag
     cd cldemo-config-mlag
-    sudo ln -s  /home/cumulus/mlag /var/www/mlag
+    sudo ln -s  /home/cumulus/cldemo-config-mlag /var/www/cldemo-config-mlag
     python pushconfig.py mlag leaf01,leaf02,leaf03,leaf04,spine01,spine02,server01,server02,server03,server04
     ssh server01
     ping 172.16.2.101
