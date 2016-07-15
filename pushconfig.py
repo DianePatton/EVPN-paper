@@ -11,7 +11,7 @@ from paramiko import SSHClient
 from multiprocessing import Process
 
 def go(host, demo):
-    url = "http://oob-mgmt-server.lab.local/cldemo-config-routing/%s/"%demo
+    url = "http://oob-mgmt-server.lab.local/cldemo-config-mlag/%s/"%demo
     expect = paramiko.SSHClient()
     expect.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     expect.connect(host, username="cumulus", password="CumulusLinux!")

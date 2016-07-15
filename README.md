@@ -12,9 +12,9 @@ Quickstart: Run the demo
     vagrant up oob-mgmt-server oob-mgmt-switch leaf01 leaf02 leaf03 leaf04 spine01 spine02 server01 server02 server03 server04
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
-    git clone https://github.com/cumulusnetworks/cldemo-config-routing
-    cd cldemo-config-routing
-    sudo ln -s  /home/cumulus/cldemo-config-routing /var/www/cldemo-config-routing
+    git clone https://github.com/cumulusnetworks/cldemo-config-mlag
+    cd cldemo-config-mlag
+    sudo ln -s  /home/cumulus/mlag /var/www/mlag
     python pushconfig.py mlag leaf01,leaf02,leaf03,leaf04,spine01,spine02,server01,server02,server03,server04
     ssh server01
     ping 172.16.2.101
