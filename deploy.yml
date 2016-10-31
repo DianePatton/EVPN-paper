@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: network
   become: yes
   tasks:
     - name: copy interfaces
@@ -8,10 +8,19 @@
       copy: src=mlag/{{ansible_hostname}}/daemons dest=/etc/quagga/
     - name: copy Quagga conf
       copy: src=mlag/{{ansible_hostname}}/Quagga.conf dest=/etc/quagga/
-
     - name: reload switchd
       service: name=switchd state=restarted
     - name: reload networking
       command: ifreload -a
     - name: reload quagga
       service: name=quagga state=restarted
+
+- hosts: servers
+  become: yes
+  tasks:
+    - name: install ifenslave package
+      apt: name={{ item }} update_cache=yes
+      with_items:
+        - ifenslave-2.6
+    - name: Setup bonding module in Kernel
+      command: modprobe bonding
