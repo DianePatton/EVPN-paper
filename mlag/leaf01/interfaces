@@ -1,4 +1,3 @@
-
 auto lo
 iface lo inet loopback
     address 10.0.0.11/32
@@ -6,16 +5,12 @@ iface lo inet loopback
 auto eth0
 iface eth0 inet dhcp
 
-
 # uplinks
 auto swp51
 iface swp51
-    address 10.0.0.11/32
 
 auto swp52
 iface swp52
-    address 10.0.0.11/32
-
 
 # peerlink
 auto swp49
@@ -39,7 +34,6 @@ iface peerlink.4094
     clagd-backup-ip 10.0.0.12
     clagd-sys-mac 44:38:39:ff:00:01
 
-
 # bridge to hosts
 auto swp1
 iface swp1
@@ -56,7 +50,6 @@ auto server2
 iface server2
     bond-slaves swp2
     clag-id 2
-
 
 auto br0
 iface br0
