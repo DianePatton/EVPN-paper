@@ -21,3 +21,5 @@ Quickstart: Run the demo
 Topology
 --------
 This demo runs on a spine-leaf topology with two dual-attached hosts. The ansible playbook deploy.yml requires an out-of-band management network that provides access to eth0 on all of the in-band devices.
+
+![Diagram](bgp-unnumbered.png)
