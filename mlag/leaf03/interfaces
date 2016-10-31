@@ -1,4 +1,3 @@
-
 auto lo
 iface lo inet loopback
     address 10.0.0.13/32
@@ -6,16 +5,12 @@ iface lo inet loopback
 auto eth0
 iface eth0 inet dhcp
 
-
 # uplinks
 auto swp51
 iface swp51
-    address 10.0.0.13/32
 
 auto swp52
 iface swp52
-    address 10.0.0.13/32
-
 
 # peerlink
 auto swp49
@@ -55,7 +50,6 @@ auto server4
 iface server4
     bond-slaves swp2
     clag-id 4
-
 
 auto br0
 iface br0
