@@ -10,16 +10,12 @@ iface eth0 inet dhcp
 # downlinks
 auto swp1
 iface swp1
-    address 10.0.0.21/32
 
 auto swp2
 iface swp2
-    address 10.0.0.21/32
 
 auto swp3
 iface swp3
-    address 10.0.0.21/32
 
 auto swp4
 iface swp4
-    address 10.0.0.21/32
