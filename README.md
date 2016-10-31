@@ -27,6 +27,27 @@ Quickstart: Run the demo
     ssh server01
     ping 172.16.2.101
 
+Quickstart: Run the demo (Ansible)
+------------------------
+    git clone https://github.com/cumulusnetworks/cldemo-vagrant
+    cd cldemo-vagrant
+    vagrant up oob-mgmt-server oob-mgmt-switch leaf01 leaf02 leaf03 leaf04 spine01 spine02 server01 server02 server03 server04
+    vagrant ssh oob-mgmt-server
+    sudo su - cumulus
+    git clone https://github.com/cumulusnetworks/cldemo-config-mlag
+    cd cldemo-config-mlag
+    sudo ln -s  /home/cumulus/cldemo-config-mlag /var/www/cldemo-config-mlag
+    ssh server01 sudo apt-get install -qy ifenslave
+    ssh server01 sudo modprobe bonding
+    ssh server02 sudo apt-get install -qy ifenslave
+    ssh server02 sudo modprobe bonding
+    ssh server03 sudo apt-get install -qy ifenslave
+    ssh server03 sudo modprobe bonding
+    ssh server04 sudo apt-get install -qy ifenslave
+    ssh server04 sudo modprobe bonding
+    ansible-playbook deploy.yml -l network
+    ssh server01
+    ping 172.16.2.101
 
 Topology
 --------
