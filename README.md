@@ -31,12 +31,12 @@ Quickstart: Run the demo (Ansible)
 ------------------------
     git clone https://github.com/cumulusnetworks/cldemo-vagrant
     cd cldemo-vagrant
-    vagrant up oob-mgmt-server oob-mgmt-switch leaf01 leaf02 leaf03 leaf04 spine01 spine02 server01 server02 server03 server04
+    vagrant up oob-mgmt-server oob-mgmt-switch 
+    vagrant up leaf01 leaf02 leaf03 leaf04 spine01 spine02 server01 server02 server03 server04
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
     git clone https://github.com/cumulusnetworks/cldemo-config-mlag
     cd cldemo-config-mlag
-    sudo ln -s  /home/cumulus/cldemo-config-mlag /var/www/cldemo-config-mlag
     ssh server01 sudo apt-get install -qy ifenslave
     ssh server01 sudo modprobe bonding
     ssh server02 sudo apt-get install -qy ifenslave
