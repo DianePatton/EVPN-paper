@@ -37,15 +37,7 @@ Quickstart: Run the demo (Ansible)
     sudo su - cumulus
     git clone https://github.com/cumulusnetworks/cldemo-config-mlag
     cd cldemo-config-mlag
-    ssh server01 sudo apt-get install -qy ifenslave
-    ssh server01 sudo modprobe bonding
-    ssh server02 sudo apt-get install -qy ifenslave
-    ssh server02 sudo modprobe bonding
-    ssh server03 sudo apt-get install -qy ifenslave
-    ssh server03 sudo modprobe bonding
-    ssh server04 sudo apt-get install -qy ifenslave
-    ssh server04 sudo modprobe bonding
-    ansible-playbook deploy.yml -l network
+    ansible-playbook deploy.yml
     ssh server01
     ping 172.16.2.101
 
