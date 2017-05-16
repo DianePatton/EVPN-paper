@@ -1,6 +1,7 @@
 auto lo
 iface lo inet loopback
     address 10.0.0.13/32
+    clagd-vxlan-anycast-ip 10.0.0.41
 
 auto eth0
 iface eth0 inet dhcp
@@ -41,18 +42,32 @@ iface swp1
 auto server3
 iface server3
     bond-slaves swp1
-    clag-id 3
+    clag-id 1
+    bridge-pvid 10
 
 auto swp2
 iface swp2
 
-auto server4
-iface server4
-    bond-slaves swp2
-    clag-id 4
+auto vxlan10
+iface vxlan10
+    vxlan-id 10
+    vxlan-local-tunnelip 10.0.0.13
+    bridge-access 10
+    mstpctl-bpduguard yes
+    mstpctl-portbpdufilter yes
+    vxlan-remoteip 10.0.0.40
 
-auto br0
-iface br0
-    bridge-ports peerlink server3 server4
-    address 172.16.2.1/24
+auto VxLanA-1
+iface VxLanA-1
+    bridge-ports vxlan10 peerlink server3
     bridge-stp on
+    bridge-vids 10
+    bridge-vlan-aware yes
+
+
+#auto server4
+#iface server4
+#    bond-slaves swp2
+#    clag-id 4
+
+
