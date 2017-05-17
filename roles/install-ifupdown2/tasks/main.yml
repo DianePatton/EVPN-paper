@@ -1,0 +1,4 @@
+---
+- name: Ifupdown2 on servers
+  apt: name=ifupdown2 state=installed update_cache=yes
+ 
