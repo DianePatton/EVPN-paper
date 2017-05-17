@@ -43,6 +43,7 @@ auto server1
 iface server1
     bond-slaves swp1
     clag-id 1
+    bridge-pvid 10
 
 auto swp2
 iface swp2
