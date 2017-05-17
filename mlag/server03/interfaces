@@ -19,7 +19,6 @@ iface uplink inet static
     bond-lacp-rate 1
     bond-min-links 1
     bond-xmit-hash-policy layer3+4
-    address 172.16.2.101
+    address 172.16.1.103
     netmask 255.255.255.0
-    post-up ip route add 172.16.0.0/16 via 172.16.2.1
-    post-up ip route add 10.0.0.0/8 via 172.16.2.1
+   
