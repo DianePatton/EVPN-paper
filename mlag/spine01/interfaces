@@ -10,12 +10,16 @@ iface eth0 inet dhcp
 # downlinks
 auto swp1
 iface swp1
+   mtu 9106
 
 auto swp2
 iface swp2
+   mtu 9106
 
 auto swp3
 iface swp3
+   mtu 9106
 
 auto swp4
 iface swp4
+   mtu 9106
