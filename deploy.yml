@@ -17,8 +17,8 @@
   user: cumulus
   become: yes
 #  become_method: sudo
-  roles:
-      - install-ifupdown2
+#  roles:
+#      - install-ifupdown2
   tasks:
     - name: install ifenslave package
       apt: name={{ item }} update_cache=yes
