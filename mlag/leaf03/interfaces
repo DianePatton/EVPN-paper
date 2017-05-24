@@ -40,7 +40,7 @@ iface peerlink.4094
     netmask 255.255.255.0
     clagd-priority 4096
     clagd-peer-ip 169.254.255.2
-    clagd-backup-ip 192.168.0.14
+    clagd-backup-ip 10.0.0.14
     clagd-sys-mac 44:38:39:ff:00:02
 
 # bridge to hosts
