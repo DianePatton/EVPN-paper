@@ -14,9 +14,9 @@
       service: name=quagga state=restarted
 
 - hosts: servers
-  user: cumulus
+#  user: cumulus
   become: yes
-#  become_method: sudo
+  become_method: sudo
 #  roles:
 #      - install-ifupdown2
   tasks:
