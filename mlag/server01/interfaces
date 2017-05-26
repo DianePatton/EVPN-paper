@@ -3,26 +3,13 @@ iface eth0 inet dhcp
 
 auto eth1
 iface eth1 inet manual
-    bond-master uplink
-    post-up ip link set $IFACE promisc on     # Only required on VX
+   address 172.16.1.1/24
+   
 
-auto eth2
-iface eth2 inet manual
-    bond-master uplink
-    post-up ip link set $IFACE promisc on     # Only required on VX
-
-auto uplink
-iface uplink inet static
-    bond-slaves none
-    bond-mode 802.3ad
-    bond-miimon 100
-    bond-lacp-rate 1
-    bond-min-links 1
-    bond-xmit-hash-policy layer3+4
-    address 172.16.1.101
-    netmask 255.255.255.0
     
 
 
-# install ifenslave
-# modprobe bonding
+    
+
+
+
