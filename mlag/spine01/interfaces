@@ -1,31 +1,33 @@
 
+# The loopback network interface
 auto lo
 iface lo inet loopback
-    address 10.0.0.21/32
+    address 10.10.2.1/32
 
+# The primary network interface
 auto eth0
 iface eth0 inet dhcp
-   vrf mgmt
-   
-auto mgmt
-iface mgmt
-   address 127.0.0.1/8
-   vrf-table auto
 
-
-# downlinks
 auto swp1
 iface swp1
-   mtu 9216
+#    address 10.10.2.1/32
+#    address 10.1.1.2/30
 
 auto swp2
 iface swp2
-   mtu 9216
+#     address 10.10.2.1/32
+#    address 10.1.2.2/30
 
 auto swp3
 iface swp3
-   mtu 9216
+#    address 10.10.2.1/32
+#    address 10.1.3.2/30
 
 auto swp4
 iface swp4
-   mtu 9216
+#     address 10.10.2.1/32
+#    address 10.1.4.2/30
+
+#auto swp31
+#iface swp31
+#  alias goign to spine2
