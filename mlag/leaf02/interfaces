@@ -9,11 +9,12 @@ iface eth0 inet dhcp
 
 auto swp1
 iface swp1
-  alias connected to spine
+  alias connected to server01
   bridge-access 20
 
 auto swp2
 iface swp2
+    alias connected to server02
     bridge-access 10
 
 auto swp51
