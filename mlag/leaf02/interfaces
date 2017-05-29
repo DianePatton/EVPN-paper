@@ -1,4 +1,4 @@
-The loopback network interface
+# The loopback network interface
 auto lo
 iface lo inet loopback
     address 10.1.1.2/32
