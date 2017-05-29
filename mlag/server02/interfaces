@@ -3,7 +3,7 @@ iface eth0 inet dhcp
 
 
 auto eth2
-iface eth2 inet manual
+iface eth2 inet static
     address 172.16.2.2/24    
 
 
