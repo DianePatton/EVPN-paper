@@ -1,7 +1,7 @@
 # The loopback network interface
 auto lo
 iface lo inet loopback
-    address 172.16.0.2/32
+    address 10.10.2.2/32
 
 # The primary network interface
 auto eth0
