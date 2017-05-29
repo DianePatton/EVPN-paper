@@ -20,12 +20,12 @@
   roles:
     - install-ifupdown2
   tasks:
-    - name: install ifenslave package
-      apt: name={{ item }} update_cache=yes
-      with_items:
-        - ifenslave-2.6
-    - name: Setup bonding module in Kernel
-      command: modprobe bonding
+  #  - name: install ifenslave package
+  #    apt: name={{ item }} update_cache=yes
+  #    with_items:
+  #      - ifenslave-2.6
+  #  - name: Setup bonding module in Kernel
+  #    command: modprobe bonding
     - name: copy interfaces
       copy: src=mlag/{{ansible_hostname}}/interfaces dest=/etc/network/      
     - name: restarts servers with their new configuration
