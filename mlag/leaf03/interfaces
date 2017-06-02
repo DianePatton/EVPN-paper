@@ -65,6 +65,6 @@ iface vlan_20
 auto bridge
 iface bridge
    bridge-vids 10-20
-   bridge-ports swp1 swp2 vxlan_10 vxlan_20
+   bridge-ports swp1 swp2 vxlan_10 vxlan_20 vlan_10 vlan_20
    bridge-vlan-aware yes
 
