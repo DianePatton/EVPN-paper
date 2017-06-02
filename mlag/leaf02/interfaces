@@ -47,7 +47,20 @@ iface vxlan_20
     bridge-access 20
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
+    
+auto vlan_10
+iface vlan_10
+   ip-forward off
+   vlan-id 10
+   vlan-raw-device bridge
+   
 
+auto vlan_20
+iface vlan_20
+    ip-forward off
+    vlan-id 20
+    vlan-raw-device bridge
+    
 auto bridge
 iface bridge
     bridge-vids 10-20
