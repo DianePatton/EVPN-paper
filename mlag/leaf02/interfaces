@@ -33,6 +33,7 @@ iface swp52
 auto vxlan_10
 iface vxlan_10
     vxlan-id 10100
+    bridge-arp-nd-suppress on
     vxlan-local-tunnelip 10.1.1.2
     vxlan-learning off
     bridge-access 10
@@ -42,6 +43,7 @@ iface vxlan_10
 auto vxlan_20
 iface vxlan_20
     vxlan-id 10200
+    bridge-arp-nd-suppress on
     vxlan-local-tunnelip 10.1.1.2
     vxlan-learning off
     bridge-access 20
@@ -64,5 +66,5 @@ iface vlan_20
 auto bridge
 iface bridge
     bridge-vids 10-20
-    bridge-ports swp1 swp2 vxlan_10 vxlan_20 vlan_10 vlan_20
+    bridge-ports swp1 swp2 vxlan_10 vxlan_20 
     bridge-vlan-aware yes
