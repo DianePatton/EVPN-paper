@@ -35,7 +35,7 @@ iface vxlan_10
     vxlan-id 10100
     bridge-arp-nd-suppress on
     vxlan-local-tunnelip 10.1.1.2
-    vxlan-learning off
+    bridge-learning off
     bridge-access 10
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
@@ -45,7 +45,7 @@ iface vxlan_20
     vxlan-id 10200
     bridge-arp-nd-suppress on
     vxlan-local-tunnelip 10.1.1.2
-    vxlan-learning off
+    bridge-learning off
     bridge-access 20
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
