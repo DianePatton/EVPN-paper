@@ -46,7 +46,7 @@ iface vxlan_20
    bridge-arp-nd-suppress on
    vxlan-local-tunnelip 10.1.1.3
    bridge-access 20
-   vxlan-learning off
+   bridge-learning off
    mstpctl-bpduguard yes
    mstpctl-portbpdufilter yes
    
