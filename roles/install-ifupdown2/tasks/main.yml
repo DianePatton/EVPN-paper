@@ -2,3 +2,6 @@
 - name: Ifupdown2 on servers
   apt: name=ifupdown2 state=installed update_cache=yes
  
+- name: Correct Known IFUPDOWN2 Issue
+  shell: sed -i '/\[Service\]/a RemainAfterExit=yes' /lib/systemd/system/networking.service
+  become: true
